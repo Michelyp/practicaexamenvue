@@ -28,6 +28,18 @@ export default class ServiceAlunnos {
 
     });
   }
+  //traer alumno por id
+  getAlumno(id) {
+    const headers = this.getToken();
+    return new Promise(function (resolve) {
+      var request = "api/alumnos/findalumnotoken/"+id;
+      var url = Global.urlApiAlumnos + request;
+      axios.get(url,{headers}).then(response =>{
+        resolve(response);
+      })
+
+    });
+  }
   getAlumnosCursos() {
     const headers = this.getToken();
     return new Promise(function (resolve) {
@@ -59,5 +71,14 @@ export default class ServiceAlunnos {
         })
     })
   }
-
+  putModificarAlumno(alumno){
+    const headers = this.getToken();
+    return new Promise(function(resolve){
+        var request = "api/alumnos/updatealumnotoken";
+        var url = Global.urlApiAlumnos + request;
+        axios.put(url, alumno,{headers}).then(response=>{
+            resolve(response);
+        })
+    })
+  }
 }

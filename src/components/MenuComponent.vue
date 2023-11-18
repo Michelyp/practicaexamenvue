@@ -17,31 +17,47 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link class="nav-link active" aria-current="page" to="#">Home</router-link>
+              <router-link class="nav-link active" aria-current="page" to="#"
+                >Home</router-link
+              >
             </li>
-            <li class="nav-item">
+            <li v-if="!token" class="nav-item">
               <router-link class="nav-link" to="/login">Login</router-link>
             </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/listar">Lista Alumnos</router-link>
-            </li>
-             <li class="nav-item">
-              <router-link class="nav-link" to="/crear">Crear Alumnos</router-link>
-            </li>
-            <li class="nav-item dropdown">
-              <router-link
-                class="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                cursos
-              </router-link>
-              <ul  class="dropdown-menu">
-                <li><router-link v-for="curso in cursos" :key ="curso" class="dropdown-item" :to="'/curso/'+curso">{{curso}}</router-link></li>
-              </ul>
-            </li>
+            <div v-if="token">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/listar"
+                  >Lista Alumnos</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/crear"
+                  >Crear Alumnos</router-link
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <router-link
+                  class="nav-link dropdown-toggle"
+                  to="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  cursos
+                </router-link>
+                <ul class="dropdown-menu">
+                  <li>
+                    <router-link
+                      v-for="curso in cursos"
+                      :key="curso"
+                      class="dropdown-item"
+                      :to="'/curso/' + curso"
+                      >{{ curso }}</router-link
+                    >
+                  </li>
+                </ul>
+              </li>
+            </div>
           </ul>
         </div>
       </div>
@@ -50,20 +66,26 @@
 </template>
 
 <script>
-import ServiceAlumno from './../services/ServiceAlumnos'
+import ServiceAlumno from "./../services/ServiceAlumnos";
 const service = new ServiceAlumno();
 export default {
   name: "MenuComponent",
-  data(){
-    return{
-      cursos:{}
-    }
+  data() {
+    return {
+      cursos: {},
+      token: "",
+    };
   },
-  mounted(){
-    service.getAlumnosCursos().then(result =>{
-      this.cursos= result.data
-    })
-  }
+  mounted() {
+    service.getAlumnosCursos().then((result) => {
+      this.cursos = result.data;
+    });
+  },
+  methods: {
+    obtenerToken() {
+      this.token = localStorage.getItem("token");
+    },
+  },
 };
 </script>
 
