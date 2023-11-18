@@ -50,7 +50,14 @@ export default class ServiceAlunnos {
     })
   }
   postCreateAlumno(alumno){
-    
+    const headers = this.getToken();
+    return new Promise(function(resolve){
+        var request = "api/alumnos/insertalumnotoken";
+        var url = Global.urlApiAlumnos + request;
+        axios.post(url, alumno,{headers}).then(response=>{
+            resolve(response);
+        })
+    })
   }
 
 }
