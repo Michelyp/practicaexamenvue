@@ -21,18 +21,14 @@
                 >Home</router-link
               >
             </li>
-            <div>
               <li class="nav-item">
                 <router-link class="nav-link" to="/login">Login</router-link>
               </li>
-            </div>
-            <div>
               <li class="nav-item">
                 <router-link class="nav-link" to="/crear"
                   >Registrar</router-link
                 >
               </li>
-            </div>
             <li class="nav-item">
               <router-link class="nav-link" to="/listar"
                 >Lista Alumnos</router-link
@@ -75,7 +71,7 @@ export default {
   name: "MenuComponent",
   data() {
     return {
-      cursos: [],
+      cursos: null,
     };
   },
   mounted() {
@@ -83,7 +79,7 @@ export default {
   },
   methods: {
     loadMarcas() {
-      service.getAlumnosCursos().then((result) => {
+      service.getAlumnosCursos().then(result => {
         this.cursos = result.data;
       });
     },

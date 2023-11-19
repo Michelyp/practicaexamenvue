@@ -5,7 +5,7 @@ export default class ServiceAlunnos {
   getToken() {
     const headers = {
       "Authorization": "Bearer " + localStorage.getItem("token")
-    };
+    }
     return headers;
   }
   getLogin(usuario) {
@@ -28,6 +28,16 @@ export default class ServiceAlunnos {
 
     });
   }
+  // getAlumnos() {
+  //   return new Promise(function (resolve) {
+  //     var request = "api/alumnos/alumnostoken";
+  //     var url = Global.urlApiAlumnos + request;
+  //     axios.get(url).then(response =>{
+  //       resolve(response.data);
+  //     })
+
+  //   });
+  // }
   //traer alumno por id
   getAlumno(id) {
     const headers = this.getToken();
@@ -40,23 +50,42 @@ export default class ServiceAlunnos {
 
     });
   }
+  // getAlumnosCursos() {
+  //   const headers = this.getToken();
+  //   return new Promise(function (resolve) {
+  //     var request = "api/alumnos/cursostoken";
+  //     var url = Global.urlApiAlumnos + request;
+  //     axios.get(url,{headers}).then(response =>{
+  //       resolve(response);
+  //     })
+
+  //   });
+  // }
   getAlumnosCursos() {
-    const headers = this.getToken();
     return new Promise(function (resolve) {
-      var request = "api/alumnos/cursostoken";
+      var request = "api/alumnos/cursos";
       var url = Global.urlApiAlumnos + request;
-      axios.get(url,{headers}).then(response =>{
+      axios.get(url).then(response =>{
         resolve(response);
       })
 
     });
   }
+  // getAlumnosFiltrarCursos(curso){
+  //   const headers = this.getToken();
+  //   return new Promise(function(resolve){
+  //       var request ="api/alumnos/filtrarcursotoken/" + curso;
+  //       var url = Global.urlApiAlumnos + request;
+  //       axios.get(url,{headers}).then(response =>{
+  //           resolve(response);
+  //         })
+  //   })
+  // }
   getAlumnosFiltrarCursos(curso){
-    const headers = this.getToken();
     return new Promise(function(resolve){
-        var request ="api/alumnos/filtrarcursotoken/" + curso;
+        var request ="api/alumnos/filtrarcurso/" + curso;
         var url = Global.urlApiAlumnos + request;
-        axios.get(url,{headers}).then(response =>{
+        axios.get(url).then(response =>{
             resolve(response);
           })
     })

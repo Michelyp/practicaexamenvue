@@ -25,7 +25,7 @@ export default {
     name:"CursoComponent",
     data(){
       return{
-        alumnos:{},
+        alumnos:[],
         idCurso: null
       }
     },

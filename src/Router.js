@@ -8,6 +8,7 @@ import ListarAlumnos from './components/ListarAlumnos.vue';
 import ModificarAlumno from './components/ModificarAlumno.vue';
 import CursoComponent from './components/CursoComponent.vue';
 
+
 const myRoutes = [
     {
         path: "/", component: HomeComponent
