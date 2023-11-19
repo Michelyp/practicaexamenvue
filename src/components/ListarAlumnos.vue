@@ -84,7 +84,7 @@ export default {
   name: "ListarAlumnos",
   data() {
     return {
-      alumnos: {},
+      alumnos: [],
     };
   },
   mounted() {

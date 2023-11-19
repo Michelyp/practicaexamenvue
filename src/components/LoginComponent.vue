@@ -2,7 +2,7 @@
   <!-- Section: Design Block -->
 <section class="text-center">
   <!-- Background image -->
-  <div class="p-5 bg-image" style="
+  <div class="p-4 bg-image" style="
         background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
         height: 300px;
         "></div>
@@ -41,10 +41,9 @@
               Sign up
             </button>
              <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">
-              Sign up
-            </button>
-
+            <router-link to="/crear" class="btn btn-primary btn-block mb-4">
+             Registrar
+            </router-link>
 
           </form>
         </div>
